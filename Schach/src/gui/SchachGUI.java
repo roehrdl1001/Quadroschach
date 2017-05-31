@@ -50,7 +50,6 @@ public class SchachGUI extends javax.swing.JFrame
         bl.draw();
         
         System.out.println(plBoard.getWidth() + " " + plBoard.getHeight() + " " + getHeight());
-        System.out.println("AAA");
     }
     
     /**
