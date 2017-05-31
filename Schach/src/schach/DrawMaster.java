@@ -176,4 +176,9 @@ public class DrawMaster
             col2 = col;
         }
     }
+    
+    public void start()
+    {
+        
+    }
 }
