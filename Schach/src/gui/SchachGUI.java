@@ -1,31 +1,38 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import schach.DrawMaster;
 
 public class SchachGUI extends javax.swing.JFrame
 {
-    private final DrawMaster bl;
-    
+
+//    private final DrawMaster bl;
+
     public SchachGUI()
     {
         initComponents();
-        
-        bl = new DrawMaster(plBoard);
-        
-        
-        this.getRootPane().addComponentListener(new ComponentAdapter()
+        plBoard.setLayout(new GridLayout(14,14));
+        try
         {
-            @Override
-            public void componentResized(ComponentEvent evt)
-            {
-                System.out.println("Resized");
-                bl.setChange(plBoard);
-                repaint();
-            }
-        });
+            start();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(SchachGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -66,25 +73,61 @@ public class SchachGUI extends javax.swing.JFrame
 
     private void onClick(java.awt.event.MouseEvent evt)//GEN-FIRST:event_onClick
     {//GEN-HEADEREND:event_onClick
-        bl.move(true,evt.getX(),evt.getY());
+//        bl.move(true, evt.getX(), evt.getY());
     }//GEN-LAST:event_onClick
 
-    @Override
-    public void paint(Graphics g)
-    {
-        super.paint(g);
-        
-        bl.draw();
-        
-        System.out.println(plBoard.getWidth() + " " + plBoard.getHeight() + " " + getHeight());
-    }
+//    @Override
+//    public void paint(Graphics g)
+//    {
+//        super.paint(g);
+//
+//        bl.draw();
+//
+//        System.out.println(plBoard.getWidth() + " " + plBoard.getHeight() + " " + getHeight());
+//    }
+//
+//    @Override
+//    public void repaint()
+//    {
+//        super.repaint();
+//    }
     
-    @Override
-    public void repaint()
+    public void start() throws IOException
     {
-        super.repaint();
+        BufferedImage pic = ImageIO.read(new File("D:\\3DHIF\\SYP\\SCHACHHHH\\ja.jpg"));
+        JLabel picLabel = new JLabel(new ImageIcon(pic));
+        Color col = Color.GRAY;
+        Color col1 = Color.WHITE;
+        for (int i = 0; i < 14; i++)
+        {
+            for (int j = 0; j < 14; j++)
+            {
+                JPanel panel = new JPanel();
+
+                if (!((i < 3 || i > 10) && (j < 3 || j > 10)))
+                {
+                    panel.setBackground(col);
+                }
+                
+                if(i == 2 && !(j < 3 || j > 10))
+                    panel.add(picLabel);
+                add(panel);
+
+                Color c = col;
+                col = col1;
+                col1 = c;
+            }
+            Color c = col;
+            col = col1;
+            col1 = c;
+        }
     }
-    
+
+    public void add(JPanel pan) throws IOException
+    {   
+        plBoard.add(pan);
+    }
+
     /**
      * @param args the command line arguments
      */
