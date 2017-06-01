@@ -20,9 +20,8 @@ public class DrawMaster
     {
         "T", "S", "L", "K", "D", "L", "S", "T"
     };
-    
-    private List<Figur> figs = new ArrayList<>();
 
+    private List<Figur> figs = new ArrayList<>();
 
     public DrawMaster(JPanel panel)
     {
@@ -30,7 +29,7 @@ public class DrawMaster
         updateGrpahics();
         updateSize();
     }
-    
+
     public void setChange(JPanel panel)
     {
         board = panel;
@@ -225,7 +224,7 @@ public class DrawMaster
             col2 = col;
         }
     }
-    
+
     public void move(boolean doppel, double X, double Y)
     {
         if (doppel)
@@ -236,13 +235,17 @@ public class DrawMaster
         {
             g.setColor(Color.BLUE);
         }
-        for(Figur f : figs)
+        for (Figur f : figs)
         {
-            if( (X > f.getX() && X < (f.getX() + sizeX )) && (Y > f.getY() && Y < (f.getY() + sizeY)))
+            if ((X > f.getX() && X < (f.getX() + sizeX)) && (Y > f.getY() && Y < (f.getY() + sizeY)))
             {
-            g.drawString(" ", (float) f.getX(), (float) f.getY());
-            f.move(false, doppel, board);
-            g.drawString("B", (float) f.getX(), (float) f.getY());
+                g.drawString(" ", (float) f.getX(), (float) f.getY());
+                Figur s = f;
+                figs.remove(f);
+                s.move(false, doppel, board);
+                g.drawString("B", (float) f.getX(), (float) f.getY());
+                figs.add(s);
+                break;
             }
         }
     }
