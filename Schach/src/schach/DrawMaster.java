@@ -3,6 +3,8 @@ package schach;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
 
 public class DrawMaster
@@ -19,7 +21,8 @@ public class DrawMaster
         "T", "S", "L", "K", "D", "L", "S", "T"
     };
     
-    public Figur[] figs = new Figur[50];
+    private List<Figur> figs = new ArrayList<>();
+
 
     public DrawMaster(JPanel panel)
     {
@@ -122,7 +125,7 @@ public class DrawMaster
             {
                 figur = "B";
                 Figur f = new Bauer(this);
-                figs[0] = f;
+                figs.add(f);
                 f.setCoords(x, y);
             }
         }
@@ -135,6 +138,9 @@ public class DrawMaster
             else if (i > 0)
             {
                 figur = "B";
+                Figur f = new Bauer(this);
+                figs.add(f);
+                f.setCoords(x, y);
             }
         }
 
@@ -155,6 +161,9 @@ public class DrawMaster
             else if (j == 6)
             {
                 figur = "B";
+                Figur f = new Bauer(this);
+                figs.add(f);
+                f.setCoords(x, y);
             }
         }
         else
@@ -162,6 +171,9 @@ public class DrawMaster
             if (j == 0)
             {
                 figur = "B";
+                Figur f = new Bauer(this);
+                figs.add(f);
+                f.setCoords(x, y);
             }
             else if (j == 6)
             {
@@ -212,14 +224,27 @@ public class DrawMaster
         }
     }
     
-    public void move(boolean doppel)
+    public void move(boolean doppel, double X, double Y)
     {
-        if(doppel)
+        if (doppel)
+        {
             g.setColor(Color.yellow);
-        Figur f = figs[0];
-        g.drawString(" ", (float)f.getX(), (float)f.getY());
-        f.move(false,doppel,board);
-        g.drawString("B", (float)f.getX(), (float)f.getY());
-        
+        }
+        else
+        {
+            g.setColor(Color.BLUE);
+        }
+        System.out.println("X="+X+"Y="+Y);
+        for(Figur f : figs)
+        {
+            System.out.println("Überprüfung:"+f.toString());
+            if( (X > f.getX() && X < (f.getX() + sizeX )) && (Y > f.getY() && Y < (f.getY() + sizeY)))
+            {
+                System.out.println("jaa");
+            g.drawString(" ", (float) f.getX(), (float) f.getY());
+            f.move(false, doppel, board);
+            g.drawString("B", (float) f.getX(), (float) f.getY());
+            }
+        }
     }
 }

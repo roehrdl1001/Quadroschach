@@ -65,7 +65,7 @@ public class SchachGUI extends javax.swing.JFrame
 
     private void onClick(java.awt.event.MouseEvent evt)//GEN-FIRST:event_onClick
     {//GEN-HEADEREND:event_onClick
-        bl.move(true);
+        bl.move(true,evt.getX(),evt.getY());
     }//GEN-LAST:event_onClick
 
     @Override
