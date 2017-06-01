@@ -35,6 +35,9 @@
           <Dimension value="[504, 504]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClick"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
