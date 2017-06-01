@@ -76,7 +76,7 @@ public class DrawMaster
         }
         else
         {
-            col1 = Color.BLACK;
+            col1 = Color.GRAY;
             col2 = Color.WHITE;
         }
 
@@ -192,7 +192,7 @@ public class DrawMaster
         updateSize();
 
         Color col1 = Color.WHITE;
-        Color col2 = Color.DARK_GRAY;
+        Color col2 = Color.GRAY;
 
         for (int i = 0; i < 8; i++)
         {
@@ -236,13 +236,10 @@ public class DrawMaster
         {
             g.setColor(Color.BLUE);
         }
-        System.out.println("X="+X+"Y="+Y);
         for(Figur f : figs)
         {
-            System.out.println("Überprüfung:"+f.toString());
             if( (X > f.getX() && X < (f.getX() + sizeX )) && (Y > f.getY() && Y < (f.getY() + sizeY)))
             {
-                System.out.println("jaa");
             g.drawString(" ", (float) f.getX(), (float) f.getY());
             f.move(false, doppel, board);
             g.drawString("B", (float) f.getX(), (float) f.getY());
