@@ -65,4 +65,12 @@ public class Bauer extends Figur
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Bauer{" + "x=" + x + ", y=" + y + '}';
+    }
+    
+    
 }

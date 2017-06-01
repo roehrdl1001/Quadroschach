@@ -228,7 +228,7 @@ public class DrawMaster
     {
         if (doppel)
         {
-            g.setColor(Color.yellow);
+            g.setColor(Color.BLUE);
         }
         else
         {
