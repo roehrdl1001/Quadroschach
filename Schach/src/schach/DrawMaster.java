@@ -32,6 +32,11 @@ public class DrawMaster
     {
         g = (Graphics2D) board.getGraphics();
     }
+    
+    public Graphics2D getGraphics()
+    {
+        return g;
+    }
 
     private void updateSize()
     {

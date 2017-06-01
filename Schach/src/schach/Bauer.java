@@ -23,8 +23,9 @@ public class Bauer extends Figur
     @Override
     public String getPosition()
     {
-        return x+":"+y;
+        return x + ":" + y;
     }
+    
     @Override
     public void move(boolean schlagen, boolean startZweier, JPanel panel)
     {
@@ -58,12 +59,10 @@ public class Bauer extends Figur
         return y;
     }
 
-
     @Override
     public void setCoords(double x, double y)
     {
         this.x = x;
         this.y = y;
     }
-    
 }

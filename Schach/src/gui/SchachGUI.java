@@ -1,8 +1,8 @@
 package gui;
 
 import java.awt.Graphics;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import schach.DrawMaster;
 
 public class SchachGUI extends javax.swing.JFrame
@@ -15,6 +15,16 @@ public class SchachGUI extends javax.swing.JFrame
         
         bl = new DrawMaster(plBoard);
         
+        
+        this.getRootPane().addComponentListener(new ComponentAdapter()
+        {
+            @Override
+            public void componentResized(ComponentEvent evt)
+            {
+                System.out.println("Resized");
+                repaint();
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -55,16 +65,23 @@ public class SchachGUI extends javax.swing.JFrame
 
     private void onClick(java.awt.event.MouseEvent evt)//GEN-FIRST:event_onClick
     {//GEN-HEADEREND:event_onClick
-        bl.move(false);
+        bl.move(true);
     }//GEN-LAST:event_onClick
 
     @Override
     public void paint(Graphics g)
     {
         super.paint(g);
+        
         bl.draw();
         
         System.out.println(plBoard.getWidth() + " " + plBoard.getHeight() + " " + getHeight());
+    }
+    
+    @Override
+    public void repaint()
+    {
+        super.repaint();
     }
     
     /**
