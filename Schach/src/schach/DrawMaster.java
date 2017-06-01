@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class DrawMaster
 {
 
-    private final JPanel board;
+    private JPanel board;
     private Graphics2D g;
 
     private double sizeX;
@@ -30,15 +30,17 @@ public class DrawMaster
         updateGrpahics();
         updateSize();
     }
+    
+    public void setChange(JPanel panel)
+    {
+        board = panel;
+        updateGrpahics();
+        updateSize();
+    }
 
     private void updateGrpahics()
     {
         g = (Graphics2D) board.getGraphics();
-    }
-    
-    public Graphics2D getGraphics()
-    {
-        return g;
     }
 
     private void updateSize()

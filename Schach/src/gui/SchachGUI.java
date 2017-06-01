@@ -22,7 +22,7 @@ public class SchachGUI extends javax.swing.JFrame
             public void componentResized(ComponentEvent evt)
             {
                 System.out.println("Resized");
-                bl.draw();
+                bl.setChange(plBoard);
                 repaint();
             }
         });
