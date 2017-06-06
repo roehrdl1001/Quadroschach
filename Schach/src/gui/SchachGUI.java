@@ -2,9 +2,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,16 +17,18 @@ import schach.DrawMaster;
 
 public class SchachGUI extends javax.swing.JFrame
 {
-
-//    private final DrawMaster bl;
+    BufferedImage pic;
+    Graphics g;
 
     public SchachGUI()
     {
         initComponents();
-        plBoard.setLayout(new GridLayout(14,14));
         try
         {
-            start();
+            
+            BufferedImage pic = ImageIO.read(new File("Turm_schwarz.png"));
+            start(pic);
+            plBoard.setLayout(new GridLayout(14, 14));
         }
         catch (IOException ex)
         {
@@ -91,11 +92,9 @@ public class SchachGUI extends javax.swing.JFrame
 //    {
 //        super.repaint();
 //    }
-    
-    public void start() throws IOException
+    public void start(BufferedImage pict) throws IOException
     {
-        BufferedImage pic = ImageIO.read(new File("D:\\3DHIF\\SYP\\SCHACHHHH\\ja.jpg"));
-        JLabel picLabel = new JLabel(new ImageIcon(pic));
+        JLabel picLabel = new JLabel(new ImageIcon(pict));
         Color col = Color.GRAY;
         Color col1 = Color.WHITE;
         for (int i = 0; i < 14; i++)
@@ -108,9 +107,13 @@ public class SchachGUI extends javax.swing.JFrame
                 {
                     panel.setBackground(col);
                 }
-                
-                if(i == 2 && !(j < 3 || j > 10))
+
+                if (i == 0 && (j == 4 || j == 10))
+                {
+                    
                     panel.add(picLabel);
+                }
+
                 add(panel);
 
                 Color c = col;
@@ -124,7 +127,7 @@ public class SchachGUI extends javax.swing.JFrame
     }
 
     public void add(JPanel pan) throws IOException
-    {   
+    {
         plBoard.add(pan);
     }
 
