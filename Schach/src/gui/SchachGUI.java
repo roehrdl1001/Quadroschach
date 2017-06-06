@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import schach.DrawMaster;
 
@@ -108,7 +109,8 @@ public class SchachGUI extends javax.swing.JFrame
                 }
                 else
                 {
-                    panel.add(p.getPic(i, j));
+                    JLabel label = p.getPic(i, j);
+                    panel.add(label);
                 }
                 add(panel);
                 Color c = col;
