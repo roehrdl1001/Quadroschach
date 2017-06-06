@@ -7,8 +7,6 @@ import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -17,22 +15,25 @@ import schach.DrawMaster;
 
 public class SchachGUI extends javax.swing.JFrame
 {
+
     BufferedImage pic;
     Graphics g;
+    Pictures p;
 
     public SchachGUI()
     {
         initComponents();
+        plBoard.setLayout(new GridLayout(14, 14));
+
         try
         {
-            
-            BufferedImage pic = ImageIO.read(new File("Turm_schwarz.png"));
-            start(pic);
-            plBoard.setLayout(new GridLayout(14, 14));
+            p = new Pictures();
+            start();
+            addPics();
         }
         catch (IOException ex)
         {
-            Logger.getLogger(SchachGUI.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("MAAANN");
         }
     }
 
@@ -92,30 +93,20 @@ public class SchachGUI extends javax.swing.JFrame
 //    {
 //        super.repaint();
 //    }
-    public void start(BufferedImage pict) throws IOException
+    public void start() throws IOException
     {
-        JLabel picLabel = new JLabel(new ImageIcon(pict));
         Color col = Color.GRAY;
         Color col1 = Color.WHITE;
-        for (int i = 0; i < 14; i++)
+        for (int j = 0; j < 14; j++)
         {
-            for (int j = 0; j < 14; j++)
+            for (int i = 0; i < 14; i++)
             {
                 JPanel panel = new JPanel();
-
-                if (!((i < 3 || i > 10) && (j < 3 || j > 10)))
+                if (!((j < 3 || j > 10) && (i < 3 || i > 10)))
                 {
                     panel.setBackground(col);
                 }
-
-                if (i == 0 && (j == 4 || j == 10))
-                {
-                    
-                    panel.add(picLabel);
-                }
-
                 add(panel);
-
                 Color c = col;
                 col = col1;
                 col1 = c;
@@ -129,6 +120,22 @@ public class SchachGUI extends javax.swing.JFrame
     public void add(JPanel pan) throws IOException
     {
         plBoard.add(pan);
+    }
+
+    public void addPics() throws IOException
+    {
+        for (int j = 0; j < 14; j++)
+        {
+            for (int i = 0; i < 14; i++)
+            {
+                JPanel panel = (JPanel) plBoard.getComponentAt(i, j);
+                if (!(p.getPic(i, j) == null))
+                {
+                    JLabel label = p.getPic(i, j);
+                    panel.add(label);
+                }
+            }
+        }
     }
 
     /**
