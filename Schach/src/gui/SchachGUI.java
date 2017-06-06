@@ -5,11 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import schach.DrawMaster;
 
@@ -29,7 +25,7 @@ public class SchachGUI extends javax.swing.JFrame
         {
             p = new Pictures();
             start();
-            addPics();
+//            addPics();
         }
         catch (IOException ex)
         {
@@ -106,6 +102,14 @@ public class SchachGUI extends javax.swing.JFrame
                 {
                     panel.setBackground(col);
                 }
+                if(p.getPic(i, j) == null)
+                {
+                    
+                }
+                else
+                {
+                    panel.add(p.getPic(i, j));
+                }
                 add(panel);
                 Color c = col;
                 col = col1;
@@ -121,22 +125,6 @@ public class SchachGUI extends javax.swing.JFrame
     {
         plBoard.add(pan);
     }
-
-    public void addPics() throws IOException
-    {
-        for (int j = 0; j < 14; j++)
-        {
-            for (int i = 0; i < 14; i++)
-            {
-                JPanel panel = (JPanel) plBoard.getComponentAt(i, j);
-                if (!(p.getPic(i, j) == null))
-                {
-                    JLabel label = p.getPic(i, j);
-                    panel.add(label);
-                }
-            }
-        }
-     }
 
     /**
      * @param args the command line arguments
