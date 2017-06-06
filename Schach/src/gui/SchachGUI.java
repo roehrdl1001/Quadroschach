@@ -136,7 +136,7 @@ public class SchachGUI extends javax.swing.JFrame
                 }
             }
         }
-    }
+     }
 
     /**
      * @param args the command line arguments

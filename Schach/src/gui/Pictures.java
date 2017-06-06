@@ -17,9 +17,9 @@ public class Pictures
             name = "Bauer_Weiß";
         else if(j == 1 && (i > 2 || i < 11))
             name = "Bauer_Silber";
-        else if(i == 12 && (j > 2 || j < 11))
+        else if(i == 11 && (j > 2 || j < 11))
             name = "Bauer_Schwarz";
-        else if(j == 12 && (i > 2 || i < 11))
+        else if(j == 11 && (i > 2 || i < 11))
             name = "Bauer_Gold";
         else if(i == 0)
         {
