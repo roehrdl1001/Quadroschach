@@ -42,6 +42,7 @@ public class SchachGUI extends javax.swing.JFrame
         plBoard = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quadroschach");
         setPreferredSize(new java.awt.Dimension(520, 542));
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 

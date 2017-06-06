@@ -14,17 +14,17 @@ public class Pictures
     {
         String name = "";
         
-        if (i == 1 && (j > 2 && j < 11))
+        if (j == 1 && (i > 2 && i < 11))
             name = "Bauer_Weiß";
-        else if(j == 1 && (i > 2 && i < 11))
+        else if(i == 1 && (j > 2 && j < 11))
             name = "Bauer_Silber";
-        else if(i == 12 && (j > 2 && j < 11))
-            name = "Bauer_Schwarz";
         else if(j == 12 && (i > 2 && i < 11))
+            name = "Bauer_Schwarz";
+        else if(i == 12 && (j > 2 && j < 11))
             name = "Bauer_Gold";
-        else if(i == 0)
+        else if(j == 0)
         {
-            switch(j)
+            switch(i)
             {
                 case 3: name = "Turm_Weiß"; break;
                 case 4: name = "Pferd_Weiß"; break;
@@ -37,9 +37,9 @@ public class Pictures
                 default: return null;
             }
         }
-        else if(j == 0)
+        else if(i == 0)
         {
-            switch(i)
+            switch(j)
             {
                 case 3: name = "Turm_Silber"; break;
                 case 4: name = "Pferd_Silber"; break;
@@ -52,9 +52,9 @@ public class Pictures
                 default: return null;
             }
         }
-        else if(j == 13)
+        else if(i == 13)
         {
-            switch(i)
+            switch(j)
             {
                 case 3: name = "Turm_Gold"; break;
                 case 4: name = "Pferd_Gold"; break;
@@ -67,9 +67,9 @@ public class Pictures
                 default: return null;
             }
         }
-        else if(i == 13)
+        else if(j == 13)
         {
-            switch(j)
+            switch(i)
             {
                 case 3: name = "Turm_Schwarz"; break;
                 case 4: name = "Pferd_Schwarz"; break;
